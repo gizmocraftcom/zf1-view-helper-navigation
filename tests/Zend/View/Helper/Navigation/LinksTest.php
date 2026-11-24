@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
+
 require_once dirname(__FILE__) . '/TestAbstract.php';
 
 /**
@@ -30,9 +32,9 @@ require_once dirname(__FILE__) . '/TestAbstract.php';
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_View
- * @group      Zend_View_Helper
  */
+#[Group('Zend_View')]
+#[Group('Zend_View_Helper')]
 class Zend_View_Helper_Navigation_LinksTest extends Zend_View_Helper_Navigation_TestAbstract
 {
     /**
@@ -712,9 +714,7 @@ class Zend_View_Helper_Navigation_LinksTest extends Zend_View_Helper_Navigation_
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-8874
-     */
+    #[Group('ZF-8874')]
     public function testRenderingWithoutWhitespace()
     {
         $active  = $this->_helper->findOneByLabel('Page 1.1');

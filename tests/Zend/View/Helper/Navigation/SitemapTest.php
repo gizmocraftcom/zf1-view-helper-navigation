@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
+
 require_once dirname(__FILE__) . '/TestAbstract.php';
 
 /**
@@ -30,9 +32,9 @@ require_once dirname(__FILE__) . '/TestAbstract.php';
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_View
- * @group      Zend_View_Helper
  */
+#[Group('Zend_View')]
+#[Group('Zend_View_Helper')]
 class Zend_View_Helper_Navigation_SitemapTest extends Zend_View_Helper_Navigation_TestAbstract
 {
     protected $_front;
@@ -299,9 +301,7 @@ class Zend_View_Helper_Navigation_SitemapTest extends Zend_View_Helper_Navigatio
         $this->fail('A Zend_View_Exception was not thrown when using Schema validation');
     }
 
-    /**
-     * @group ZF-8874
-     */
+    #[Group('ZF-8874')]
     public function testRenderingWithoutWhitespace()
     {
         // Reset format output option

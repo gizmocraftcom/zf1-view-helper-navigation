@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
+
 require_once dirname(__FILE__) . '/TestAbstract.php';
 
 /**
@@ -30,9 +32,9 @@ require_once dirname(__FILE__) . '/TestAbstract.php';
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_View
- * @group      Zend_View_Helper
  */
+#[Group('Zend_View')]
+#[Group('Zend_View_Helper')]
 class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_TestAbstract
 {
     /**
@@ -189,9 +191,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav2));
     }
 
-    /**
-     * @group ZF-10409
-     */
+    #[Group('ZF-10409')]
     public function testSetPrefixForIdWithContent()
     {
         $this->_helper->setPrefixForId('test-');
@@ -199,9 +199,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav3));
     }
 
-    /**
-     * @group ZF-10409
-     */
+    #[Group('ZF-10409')]
     public function testSetPrefixForIdWithoutContent()
     {
         $this->_helper->setPrefixForId('');
@@ -209,9 +207,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav3));
     }
 
-    /**
-     * @group ZF-10409
-     */
+    #[Group('ZF-10409')]
     public function testSetPrefixForIdWithNull()
     {
         $this->_helper->setPrefixForId(null);
@@ -219,36 +215,28 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav3));
     }
 
-    /**
-     * @group ZF-10409
-     */
+    #[Group('ZF-10409')]
     public function testGetPrefixForIdWithContent()
     {
         $this->_helper->setPrefixForId('test');
         $this->assertEquals('test', $this->_helper->getPrefixForId());
     }
 
-    /**
-     * @group ZF-10409
-     */
+    #[Group('ZF-10409')]
     public function testGetPrefixForIdWithoutContent()
     {
         $this->_helper->setPrefixForId('');
         $this->assertEquals('', $this->_helper->getPrefixForId());
     }
 
-    /**
-     * @group ZF-10409
-     */
+    #[Group('ZF-10409')]
     public function testGetPrefixForIdWithNull()
     {
         $this->_helper->setPrefixForId(null);
         $this->assertEquals('menu-', $this->_helper->getPrefixForId());
     }
 
-    /**
-     * @group ZF-10409
-     */
+    #[Group('ZF-10409')]
     public function testSkipPrefixForIdTrue()
     {
         $this->_helper->skipPrefixForId(true);
@@ -256,9 +244,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav3));
     }
 
-    /**
-     * @group ZF-10409
-     */
+    #[Group('ZF-10409')]
     public function testSkipPrefixForIdFalse()
     {
         $this->_helper->skipPrefixForId(false);
@@ -590,9 +576,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-9746
-     */
+    #[Group('ZF-9746')]
     public function testRenderingWithAccesskey()
     {
         $this->_nav3->findOneBy('id', 'home')->setAccesskey('H');
@@ -604,9 +588,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav3));
     }
 
-    /**
-     * @group ZF-6941
-     */
+    #[Group('ZF-6941')]
     public function testExpandSiblingNodesOfActiveBranch()
     {
         $this->_helper->setExpandSiblingNodesOfActiveBranch(true);
@@ -617,9 +599,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-6941
-     */
+    #[Group('ZF-6941')]
     public function testExpandSiblingNodesOfActiveBranchWhenShowingOnlyActiveBranch()
     {
         $this->_helper->setExpandSiblingNodesOfActiveBranch(true)->setOnlyActiveBranch(true);
@@ -630,9 +610,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-11876
-     */
+    #[Group('ZF-11876')]
     public function testRenderingWithCustomHtmlAttribs()
     {
         $this->_nav3->findOneBy('id', 'home')->setCustomHtmlAttrib('rel', 'nofollow');
@@ -649,9 +627,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav3));
     }
 
-    /**
-     * @group ZF-7212
-     */
+    #[Group('ZF-7212')]
     public function testRenderingWithUlId()
     {
         $this->_helper->setUlId('foo');
@@ -662,9 +638,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         );
     }
 
-    /**
-     * @group ZF-7212
-     */
+    #[Group('ZF-7212')]
     public function testRenderingWithUlIdPerOptions()
     {
         $this->assertStringContainsString(
@@ -673,9 +647,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         );
     }
 
-    /**
-     * @group ZF-7212
-     */
+    #[Group('ZF-7212')]
     public function testRenderingOnlyActiveBranchWithUlId()
     {
         $this->_helper->setUlId('foo')
@@ -688,9 +660,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         );
     }
 
-    /**
-     * @group ZF-7212
-     */
+    #[Group('ZF-7212')]
     public function testRenderingSubMenuWithUlId()
     {
         $this->assertStringContainsString(
@@ -699,9 +669,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         );
     }
 
-    /**
-     * @group ZF-7212
-     */
+    #[Group('ZF-7212')]
     public function testRenderingDeepestMenuWithUlId()
     {
         $this->assertStringContainsString(
@@ -710,18 +678,14 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         );
     }
 
-    /**
-     * @group ZF-7003
-     */
+    #[Group('ZF-7003')]
     public function testSetAddPageClassToLi()
     {
         $this->_helper->addPageClassToLi();
         $this->assertTrue($this->_helper->getAddPageClassToLi());
     }
 
-    /**
-     * @group ZF-7003
-     */
+    #[Group('ZF-7003')]
     public function testRenderingWithPageClassToLi()
     {
         $this->_helper->addPageClassToLi();
@@ -741,9 +705,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         );
     }
 
-    /**
-     * @group ZF-7003
-     */
+    #[Group('ZF-7003')]
     public function testRenderDeepestMenuWithPageClassToLi()
     {
         // Add css class
@@ -767,9 +729,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         );
     }
 
-    /**
-     * @group ZF-9543
-     */
+    #[Group('ZF-9543')]
     public function testSetActiveClass()
     {
         $this->_helper->setActiveClass('current');
@@ -782,9 +742,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav2));
     }
 
-    /**
-     * @group ZF-9543
-     */
+    #[Group('ZF-9543')]
     public function testRenderDeepestMenuWithCustomActiveClass()
     {
         // Tests
@@ -800,9 +758,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertStringNotContainsString('<li class="active">', $html);
     }
 
-    /**
-     * @group ZF-8951
-     */
+    #[Group('ZF-8951')]
     public function testSetRenderParentClass()
     {
         $this->_helper->setRenderParentClass(true);
@@ -810,9 +766,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertTrue($this->_helper->getRenderParentClass());
     }
 
-    /**
-     * @group ZF-8951
-     */
+    #[Group('ZF-8951')]
     public function testSetParentClass()
     {
         $this->_helper->setParentClass('foo');
@@ -820,9 +774,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals('foo', $this->_helper->getParentClass());
     }
 
-    /**
-     * @group ZF-8951
-     */
+    #[Group('ZF-8951')]
     public function testOptionRenderParentClass()
     {
         $expected = $this->_getExpected('menu/parentclass_standard.html');
@@ -836,9 +788,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-8951
-     */
+    #[Group('ZF-8951')]
     public function testOptionRenderParentClassAndParentClass()
     {
         $expected = $this->_getExpected('menu/parentclass_custom.html');
@@ -853,9 +803,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-8951
-     */
+    #[Group('ZF-8951')]
     public function testRenderingWithStandardParentClass()
     {
         $this->_helper->setRenderParentClass(true);
@@ -864,9 +812,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render());
     }
 
-    /**
-     * @group ZF-8951
-     */
+    #[Group('ZF-8951')]
     public function testRenderingWithCustomParentClass()
     {
         $this->_helper->setRenderParentClass(true);
@@ -876,9 +822,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render());
     }
 
-    /**
-     * @group ZF-8951
-     */
+    #[Group('ZF-8951')]
     public function testRenderingWithParentClassAndBothDepts()
     {
         $this->_helper->setRenderParentClass(true);
@@ -889,9 +833,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-8951
-     */
+    #[Group('ZF-8951')]
     public function testRenderingWithParentClassAndOnlyActiveBranchAndBothDepts()
     {
         $this->_helper->setRenderParentClass(true);
@@ -903,9 +845,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-8874
-     */
+    #[Group('ZF-8874')]
     public function testSetAndGetInnerIndent()
     {
         // Test standard
@@ -923,9 +863,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertSame('', $this->_helper->getInnerIndent());
     }
 
-    /**
-     * @group ZF-8874
-     */
+    #[Group('ZF-8874')]
     public function testRenderingWithoutWhitespace()
     {
         $this->_helper->setFormatOutput(false);
@@ -935,9 +873,7 @@ class Zend_View_Helper_Navigation_MenuTest extends Zend_View_Helper_Navigation_T
         $this->assertEquals($expected, $this->_helper->render($this->_nav1));
     }
 
-    /**
-     * @group ZF-8874
-     */
+    #[Group('ZF-8874')]
     public function testRenderingWithInnerIndent()
     {
         $this->_helper->setIndent(4);

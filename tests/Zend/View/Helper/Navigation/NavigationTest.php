@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
+
 require_once dirname(__FILE__) . '/TestAbstract.php';
 
 /**
@@ -30,9 +32,9 @@ require_once dirname(__FILE__) . '/TestAbstract.php';
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_View
- * @group      Zend_View_Helper
  */
+#[Group('Zend_View')]
+#[Group('Zend_View_Helper')]
 class Zend_View_Helper_Navigation_NavigationTest extends Zend_View_Helper_Navigation_TestAbstract
 {
     /**
@@ -378,9 +380,7 @@ class Zend_View_Helper_Navigation_NavigationTest extends Zend_View_Helper_Naviga
         $this->assertEquals($expected, $actual);
     }
 
-    /**
-     * @group ZF-10458
-     */
+    #[Group('ZF-10458')]
     public function testFindCustomHelper()
     {
         $this->_helper->view->addHelperPath(
@@ -394,9 +394,7 @@ class Zend_View_Helper_Navigation_NavigationTest extends Zend_View_Helper_Naviga
         );
     }
 
-    /**
-     * @group ZF-10458
-     */
+    #[Group('ZF-10458')]
     public function testAddHelperPath()
     {
         $this->_helper->view->addHelperPath(
@@ -416,9 +414,7 @@ class Zend_View_Helper_Navigation_NavigationTest extends Zend_View_Helper_Naviga
         $this->assertSame($expected, $this->_helper->view->getHelperPaths());
     }
 
-    /**
-     * @group ZF-10458
-     */
+    #[Group('ZF-10458')]
     public function testRenderCustomHelper()
     {
         $this->_helper->view->addHelperPath(
@@ -429,9 +425,7 @@ class Zend_View_Helper_Navigation_NavigationTest extends Zend_View_Helper_Naviga
         $this->assertSame('<menu/>', (string) $this->_helper->menu());
     }
 
-    /**
-     * @group ZF-6854
-     */
+    #[Group('ZF-6854')]
     public function testRenderInvisibleItem()
     {
         $container = new Zend_Navigation(array(
